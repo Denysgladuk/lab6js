@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Завдання</title>
+  <script language="JavaScript">
+      function printCurrentDateTime() {
+        var now = new Date();
+        var dateTime = "Час: " + now.getHours() + ":" + (now.getMinutes() < 10 ? '0' : '') + now.getMinutes() + "<br>" +
+          "Дата: " + (now.getMonth() + 1) + "/" + now.getDate() + "/" + (now.getFullYear());
+        document.getElementById("datetime").innerHTML = dateTime;
+        // Автоматичне оновлення годинника
+        setInterval(updateClock, 1000);
+      }
+
+      function updateClock() {
+        var now = new Date();
+        var timeStr = "" + now.getHours();
+        timeStr += ((now.getMinutes() < 10) ? ":0" : ":") + now.getMinutes();
+        timeStr += ((now.getSeconds() < 10) ? ":0" : ":") + now.getSeconds();
+        document.clock.time.value = timeStr;
+        var dateStr = "" + (now.getMonth() + 1);
+        dateStr += ((now.getDate() < 10) ? "/0" : "/") + now.getDate();
+        dateStr += "/" + now.getFullYear();
+        document.clock.date.value = dateStr;
+      }
+
+    function printArrayElements() {
+      var myArray = [];
+      myArray[0] = "перший елемент";
+      myArray[1] = "другий елемент";
+      myArray[2] = "третій елемент";
+      var arrayContent = "";
+      for (var i = 0; i < 3; i++) {
+        arrayContent += myArray[i] + "<br>";
+      }
+      document.getElementById("arrayElements").innerHTML = arrayContent;
+    }
+  </script>
+</head>
+<body>
+  <h2>Кнопка для завдання 1 і 2</h2>
+  <button onclick="printCurrentDateTime()">Показати час і дату</button>
+
+  <h2>Завдання 1</h2>
+  <div id="datetime"></div>
+  
+  <h2>Завдання 2</h2>
+  <form name="clock">
+    Час: <input type="text" name="time" size="8" value=""><br>
+    Дата: <input type="text" name="date" size="8" value="">
+  </form>
+  <h2>Завдання 3</h2>
+  <button onclick="printArrayElements();">Для виведення елементів масиву</button>
+  <div id="arrayElements"></div>
+  </body>
+  </html>
